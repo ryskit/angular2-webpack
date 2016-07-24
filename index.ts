@@ -1,27 +1,5 @@
-import 'core-js';
-import 'rxjs/Rx';
-import 'zone.js/dist/zone';
+import { bootstrap } from '@angular/platform-browser-dynamic';
 
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {Component} from '@angular/core';
+import { AppComponent } from './app.component';
 
-@Component({
-    selector: 'hello-world',
-    template: `
-    <h1>Angular2 is not Easy :(</h1>
-  `
-})
-class HelloWorldComponent {
-}
-
-@Component({
-    selector: 'my-app',
-    template: `
-    <hello-world></hello-world>
-  `,
-    directives: [HelloWorldComponent]
-})
-class MyAppComponent {
-}
-
-bootstrap(MyAppComponent);
+bootstrap(AppComponent);
