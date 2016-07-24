@@ -1,7 +1,7 @@
 {
   "name": "angular2-webpack",
   "version": "1.0.0",
-  "description": "A webpack starter for angular 2",
+  "description": "trying angular2 + webpack",
   "scripts": {
     "tsc": "tsc -p . ",
     "start": "webpack-dev-server",
