@@ -1,2 +1,20 @@
-<h3>Http Example</h3>
-<pre>{{ data | json }}</pre>
+<button (click)="getFriends(true)">データ取得</button>
+  <button (click)="getFriends(false)">データ取得（エラー）</button><br />
+  <div *ngIf="status">
+    <strong>レスポンスデータ</strong><br />
+    <table class="table table-striped">
+      <thead><tr>
+        <th>№</th><th>名前</th><th>年齢</th><th>住所</th>
+      </tr></thead>
+      <tbody>
+        <tr *ngFor="let item of friends">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.age}}</td>
+          <td>{{item.address}}</td>
+        </tr>
+      </tbody>
+    </table>
+    ステータス：{{status}}<br />
+    エラー：{{error}}<br />
+  </div>
