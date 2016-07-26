@@ -3,13 +3,12 @@ var path    = require("path");
 
 module.exports = {
     entry: {
-        bundle: ["./build/main.js"]
+        app: ["./build/main.js"]
     },
 
     output: {
         path: path.resolve(__dirname, "build"),
-        publicPath: "/assets/",
-        filename: "[name].js"
+        filename: "[name].bundle.js"
     },
 
     resolve: {
