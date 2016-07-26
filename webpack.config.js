@@ -3,7 +3,7 @@ var path    = require("path");
 
 module.exports = {
     entry: {
-        bundle: ["./app/main.js"]
+        bundle: ["./build/main.js"]
     },
 
     output: {
