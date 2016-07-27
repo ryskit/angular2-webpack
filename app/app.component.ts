@@ -19,7 +19,7 @@ import { Friend } from './friend';
 })
 
 export class AppComponent {
-  public status: any;
+  public status: boolean;
   public error: any;
   public friends: Friend[];
 
