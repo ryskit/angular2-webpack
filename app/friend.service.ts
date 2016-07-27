@@ -9,16 +9,20 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/observable';
-import { Sample } from './sample';
+import { Friend } from './friend';
 
 @Injectable()
-export class SampleService {
-
-  public sample: Sample[];
+export class FriendService {
 
   constructor(private http: Http) {}
 
-  fetch(): Observable<Sample> {
-    return this.http.get("./data.json").map(res=>res.json() as Sample);
+  getFriends(url: any) {
+    return this.http.get(url)
+                    .toPromise();
+  }
+
+  private handleError(error: any) {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
   }
 }

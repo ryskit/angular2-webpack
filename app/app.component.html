@@ -4,17 +4,18 @@
     <strong>レスポンスデータ</strong><br />
     <table class="table table-striped">
       <thead><tr>
-        <th>№</th><th>名前</th><th>年齢</th><th>住所</th>
+        <th>No</th><th>名前</th><th>年齢</th><th>住所</th>
       </tr></thead>
       <tbody>
-        <tr *ngFor="let item of friends">
-          <td>{{item.id}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.age}}</td>
-          <td>{{item.address}}</td>
+        <tr *ngFor="let friend of friends">
+          <td>{{ friend.id }}</td>
+          <td>{{ friend.name }}</td>
+          <td>{{ friend.age }}</td>
+          <td>{{ friend.address }}</td>
         </tr>
       </tbody>
     </table>
-    ステータス：{{status}}<br />
-    エラー：{{error}}<br />
+  </div>
+  <div *ngIf="!status">
+    {{ error }}
   </div>
