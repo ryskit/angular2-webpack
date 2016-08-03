@@ -1,21 +1,10 @@
-<button (click)="getFriends(true)">データ取得</button>
-  <button (click)="getFriends(false)">データ取得（エラー）</button><br />
-  <div *ngIf="status">
-    <strong>レスポンスデータ</strong><br />
-    <table class="table table-striped">
-      <thead><tr>
-        <th>No</th><th>名前</th><th>年齢</th><th>住所</th>
-      </tr></thead>
-      <tbody>
-        <tr *ngFor="let friend of friends">
-          <td>{{ friend.id }}</td>
-          <td>{{ friend.name }}</td>
-          <td>{{ friend.age }}</td>
-          <td>{{ friend.address }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div *ngIf="!status">
-    {{ error }}
-  </div>
+<h1>{{title}}</h1>
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes"
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+<my-hero-detail [hero]="selectedHero"></my-hero-detail>

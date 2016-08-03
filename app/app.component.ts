@@ -1,45 +1,31 @@
-import { Component, Injectable } from '@angular/core';
+import { Component } from '@angular/core';
+import { Hero } from './hero';
+import { HeroDetailComponent } from './hero-detail.component';
 
-import {Http} from '@angular/http';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/toPromise';
-import {Observable} from 'rxjs/Observable';
-import { FriendService } from './friend.service';
-import { Friend } from './friend';
+const HEROES: Hero[] = [
+  { id: 11, name: 'Mr. Nice' },
+  { id: 12, name: 'Narco' },
+  { id: 13, name: 'Bombasto' },
+  { id: 14, name: 'Celeritas' },
+  { id: 15, name: 'Magneta' },
+  { id: 16, name: 'RubberMan' },
+  { id: 17, name: 'Dynama' },
+  { id: 18, name: 'Dr IQ' },
+  { id: 19, name: 'Magma' },
+  { id: 20, name: 'Tornado' }
+];
 
 @Component({
   selector: 'my-app',
-  templateUrl: "./app/app.component.html",
-  providers: [FriendService]
+  templateUrl: 'app/app.component.html',
+  directives: [HeroDetailComponent]
 })
 
 export class AppComponent {
-  public status: boolean;
-  public error: any;
-  public friends: Friend[];
+  title = "Tour of Heroes";
 
-  constructor(private friendService: FriendService, private http: Http) {}
+  heroes = HEROES;
+  selectedHero: Hero;
 
-  getFriends(tf: boolean) {
-      var url = (tf ? "/data.json" : "invalid-url");
-      this.friendService
-          .getFriends(url)
-          .then(friends => {
-            this.friends = friends.json() as Friend[];
-            this.status  = true;
-          })
-          .catch(error  => {
-            this.error = error;
-            this.status = false;
-          });
-  }
-
-  ngOnInit() {
-
-  }
+  onSelect(hero: Hero) { this.selectedHero = hero; }
 }
