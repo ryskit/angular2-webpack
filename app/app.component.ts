@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Hero } from './hero';
 import { HeroDetailComponent } from './hero-detail.component';
+import { FriendListComponent } from './friend-list.component';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 const HEROES: Hero[] = [
   { id: 11, name: 'Mr. Nice' },
@@ -18,7 +20,11 @@ const HEROES: Hero[] = [
 @Component({
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
-  directives: [HeroDetailComponent]
+  directives: [
+    HeroDetailComponent,
+    FriendListComponent,
+    ROUTER_DIRECTIVES
+  ]
 })
 
 export class AppComponent {
