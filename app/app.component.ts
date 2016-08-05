@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { HeroService } from './hero.service';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-
+import { HeroService } from './services/hero.service';
 
 @Component({
   selector: 'my-app',

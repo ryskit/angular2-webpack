@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import { HeroService } from './services/hero.service';
 import { HeroDetailComponent } from './hero-detail.component';
+
 
 @Component({
   selector: 'my-hero',
   templateUrl: 'app/heroes.component.html',
-  directives: []
+  directives: [HeroDetailComponent]
 })
 
 export class HeroesComponent implements OnInit {
@@ -28,6 +29,16 @@ export class HeroesComponent implements OnInit {
 
   getHeroes() {
     this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+  }
+
+  addHero() {
+    this.addingHero = true;
+    this.selectedHero = null;
+  }
+
+  close(savedHero: Hero) {
+    this.addingHero = false;
+    if (savedHero) { this.getHeroes(); }
   }
 
   onSelect(hero: Hero) {
