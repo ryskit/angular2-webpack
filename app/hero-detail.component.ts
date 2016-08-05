@@ -35,6 +35,16 @@ export class HeroDetailComponent implements OnInit {
     });
   }
 
+  save() {
+    this.heroService
+        .save(this.hero)
+        .then(hero => {
+          this.hero = hero; // saved hero, w/ id if new
+          this.goBack(hero);
+        })
+        .catch(error => this.error = error); // TODO: Display error message
+  }
+
   goBack(saveHero: Hero = null) {
     this.close.emit(saveHero);
     if (this.navigated) { window.history.back(); }
