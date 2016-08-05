@@ -9,6 +9,9 @@ import { HeroSearchComponent } from './hero-search.component';
 @Component({
   selector: 'my-hero',
   templateUrl: 'app/heroes.component.html',
+  styleUrls: [
+    'app/heroes.component.css',
+  ],
   directives: [
     HeroDetailComponent,
     HeroSearchComponent
