@@ -9,9 +9,8 @@ const routes: RouterConfig = [
     pathMatch: 'full' },
   { path: 'heroes',
     component: HeroesComponent },
-    {
-      path: 'detail/:id',
-      component: HeroDetailComponent },
+  { path: 'detail/:id',
+    component: HeroDetailComponent },
 ];
 
 export const AppRouterProviders = [

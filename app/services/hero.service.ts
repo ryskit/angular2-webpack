@@ -42,12 +42,6 @@ export class HeroService {
                .toPromise()
                .catch(this.handleError);
   }
-  
-  getHeroesSlowly() {
-    return new Promise<Hero[]>(resolve =>
-      setTimeout(() => resolve(HEROES), 2000)
-    );
-  }
 
   private post(hero: Hero): Promise<Hero> {
     let headers = new Headers({
