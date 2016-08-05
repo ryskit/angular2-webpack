@@ -4,12 +4,15 @@ import { Router } from '@angular/router';
 import { Hero } from './hero';
 import { HeroService } from './services/hero.service';
 import { HeroDetailComponent } from './hero-detail.component';
-
+import { HeroSearchComponent } from './hero-search.component';
 
 @Component({
   selector: 'my-hero',
   templateUrl: 'app/heroes.component.html',
-  directives: [HeroDetailComponent]
+  directives: [
+    HeroDetailComponent,
+    HeroSearchComponent
+  ]
 })
 
 export class HeroesComponent implements OnInit {
