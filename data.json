@@ -1,14 +1,6 @@
 [
-  {
-    "id": 1,
-    "name": "taro",
-    "age": 26,
-    "address": "osaka"
-  },
-  {
-    "id": 2,
-    "name": "jiro",
-    "age": 25,
-    "address": "kyoto"
-  }
+  { "id": 1,
+    "name": "taro"},
+  { "id": 2,
+    "name": "jiro"}
 ]

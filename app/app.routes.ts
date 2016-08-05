@@ -1,12 +1,13 @@
 import { provideRouter, RouterConfig } from '@angular/router';
 
-import { FriendListComponent } from './friend-list.component';
+import { HeroesComponent } from './heroes.component';
 
 const routes: RouterConfig = [
   { path: '',
-    component: FriendListComponent },
-  { path: 'friend-list',
-    component: FriendListComponent }
+    redirectTo: '/heroes',
+    pathMatch: 'full' },
+  { path: 'heroes',
+    component: HeroesComponent }
 ];
 
 export const AppRouterProviders = [
