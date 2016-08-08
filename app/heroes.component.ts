@@ -14,7 +14,7 @@ import { HeroSearchComponent } from './hero-search.component';
   ],
   directives: [
     HeroDetailComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
   ]
 })
 
@@ -22,6 +22,10 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
   error: any;
+
+  itemsPerPage: number = 3;
+  currentPage: number  = 1;
+  private _maxPage: number;
 
   constructor(
     private router: Router,
@@ -58,4 +62,40 @@ export class HeroesComponent implements OnInit {
     return this.router.navigate(['/detail', hero.id]);
   }
 
+
+
+
+
+  range() {
+    var count = 0;
+    for (var h in this.heroes) {
+      count++;
+    }
+    this._maxPage = Math.ceil(count / this.itemsPerPage);
+    var ret: any = [];
+    for (var i=1; i<=this._maxPage; i++) {
+      ret.push(i);
+    }
+    return ret;
+  };
+  setPage(n: number) {
+    this.currentPage = n;
+  };
+  prevPage() {
+    if (this.currentPage > 1) {
+      --this.currentPage;
+    }
+  };
+  nextPage() {
+    if (this.currentPage < this._maxPage) {
+      ++this.currentPage;
+    }
+  };
+  prevPageDisabled() {
+    return this.currentPage === 1 ? "disabled" : "";
+  };
+
+  nextPageDisabled() {
+    return this.currentPage === this._maxPage ? "disabled" : "";
+  };
 }

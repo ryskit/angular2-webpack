@@ -2,10 +2,15 @@
 
 <hero-search></hero-search>
 
+<hr>
+
 <button (click)="gotoDetail()">Add New Hero</button>
 
+<div class="error" *ngIf="error">{{error}}</div>
+
 <ul class="heroes">
-  <li *ngFor="let hero of heroes" (click)="gotoDetail(hero)" [class.selected]="hero === selectedHero">
+  <li *ngFor="let hero of heroes | slice:(currentPage-1)*itemsPerPage:currentPage*itemsPerPage"
+      (click)="gotoDetail(hero)" [class.selected]="hero === selectedHero">
     <span class="hero-element">
       <span class="badge">{{hero.id}}</span> {{hero.name}}
     </span>
@@ -13,4 +18,16 @@
   </li>
 </ul>
 
-<div class="error" *ngIf="error">{{error}}</div>
+<ul class="pagination">
+  <li [ngClass]="prevPageDisabled()">
+    <a (click)="prevPage()">< 前へ</a>
+  </li>
+  <li *ngFor="let n of range()"
+      [ngClass]="{active: n === currentPage}"
+      (click)="setPage(n)">
+    <a>{{n}}</a>
+  </li>
+  <li [ngClass]="nextPageDisabled()">
+    <a (click)="nextPage()">次へ ></a>
+  </li>
+</ul>

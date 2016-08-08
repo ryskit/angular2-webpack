@@ -159,6 +159,31 @@ button.delete-button{
   height: 20px;
 }
 
+.pagination {
+  display: block;
+  list-style-type: none;
+}
+
+.pagination li {
+  display: inline-block;
+  padding: 10px 10px;
+  background-color: #eee;
+  margin: auto 5px;
+}
+
+.desabled {
+
+}
+
+.pagination li.active {
+  background-color: lightblue;
+}
+.pagination li:hover {
+  background-color: lightblue;
+}
+
+
+
 /* everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;
