@@ -17,7 +17,6 @@ export class HeroSearchService {
                 .toPromise()
                 .then(res => {
                   var data = res.json() as Hero[];
-                  console.log(data);
                   var heroes: Array<Hero> = new Array();
                   var reg = new RegExp(term);
                   for (let hero of data) {

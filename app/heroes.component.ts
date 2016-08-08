@@ -19,7 +19,7 @@ import { HeroSearchComponent } from './hero-search.component';
 })
 
 export class HeroesComponent implements OnInit {
-  heroes: Hero[];
+  heroes: Array<Hero> = new Array();
   selectedHero: Hero;
   error: any;
 
@@ -67,10 +67,7 @@ export class HeroesComponent implements OnInit {
 
 
   range() {
-    var count = 0;
-    for (var h in this.heroes) {
-      count++;
-    }
+    var count = this.heroes.length;
     this._maxPage = Math.ceil(count / this.itemsPerPage);
     var ret: any = [];
     for (var i=1; i<=this._maxPage; i++) {
