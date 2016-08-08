@@ -21,7 +21,6 @@ import { HeroSearchComponent } from './hero-search.component';
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
-  addingHero = false;
   error: any;
 
   constructor(
@@ -37,16 +36,6 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes().then(heroes => this.heroes = heroes);
   }
 
-  addHero() {
-    this.addingHero = true;
-    this.selectedHero = null;
-  }
-
-  close(savedHero: Hero) {
-    this.addingHero = false;
-    if (savedHero) { this.getHeroes(); }
-  }
-
   deleteHero(hero: Hero, event: any) {
     event.stopPropagation();
     this.heroService
@@ -60,10 +49,13 @@ export class HeroesComponent implements OnInit {
 
   onSelect(hero: Hero) {
     this.selectedHero = hero;
-    this.addingHero = false;
   }
 
-  gotoDetail() {
-    this.router.navigate(['/detail', this.selectedHero.id]);
+  gotoDetail(hero: Hero) {
+    this.router.navigate(['/detail', hero.id]);
+  }
+
+  gotoDetailAdd() {
+    this.router.navigate(['/detail/add']);
   }
 }

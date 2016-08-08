@@ -9,6 +9,8 @@ const routes: RouterConfig = [
     pathMatch: 'full' },
   { path: 'heroes',
     component: HeroesComponent },
+  { path: 'detail/add',
+    component: HeroDetailComponent },
   { path: 'detail/:id',
     component: HeroDetailComponent },
 ];

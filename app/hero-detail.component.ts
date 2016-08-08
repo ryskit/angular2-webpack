@@ -30,7 +30,7 @@ export class HeroDetailComponent implements OnInit {
         this.heroService.getHero(id)
             .then(hero => this.hero = hero);
       } else {
-        this.navigated = false;
+        this.navigated = true;
         this.hero = new Hero();
       }
     });
