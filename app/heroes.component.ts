@@ -51,11 +51,11 @@ export class HeroesComponent implements OnInit {
     this.selectedHero = hero;
   }
 
-  gotoDetail(hero: Hero) {
-    this.router.navigate(['/detail', hero.id]);
+  gotoDetail(hero: Hero = null) {
+    if (hero === null) {
+      return this.router.navigate(['/detail/add']);
+    }
+    return this.router.navigate(['/detail', hero.id]);
   }
 
-  gotoDetailAdd() {
-    this.router.navigate(['/detail/add']);
-  }
 }
