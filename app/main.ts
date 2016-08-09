@@ -6,6 +6,6 @@ import { AppRouterProviders } from './app.routes';
 
 bootstrap(AppComponent, [
   HTTP_PROVIDERS,
-  AppRouterProviders
+  AppRouterProviders,
 ])
 .catch(err => console.log(err));
