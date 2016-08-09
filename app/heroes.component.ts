@@ -6,6 +6,7 @@ import { Hero } from './hero';
 import { HeroService } from './services/hero.service';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroSearchComponent } from './hero-search.component';
+import { PaginatePipe, PaginationControlsCmp, PaginationService } from 'ng2-pagination';
 
 @Component({
   selector: 'my-hero',
@@ -16,11 +17,18 @@ import { HeroSearchComponent } from './hero-search.component';
   directives: [
     HeroDetailComponent,
     HeroSearchComponent,
+    PaginationControlsCmp
+  ],
+  pipes: [
+    PaginatePipe
+  ],
+  providers: [
+    PaginationService
   ]
 })
 
 export class HeroesComponent implements OnInit {
-  heroes: Array<Hero> = new Array();
+  heroes: Hero[];
   selectedHero: Hero;
   error: any;
 
@@ -67,35 +75,7 @@ export class HeroesComponent implements OnInit {
 
 
 
-  range() {
-    var count = this.heroes.length;
-    this._maxPage = Math.ceil(count / this.itemsPerPage);
-    var ret: any = [];
-    for (var i=1; i<=this._maxPage; i++) {
-      ret.push(i);
-    }
-    return ret;
-  };
-  setPage(n: number) {
-    this.currentPage = n;
-  };
-  prevPage() {
-    if (this.currentPage > 1) {
-      --this.currentPage;
-    }
-  };
-  nextPage() {
-    if (this.currentPage < this._maxPage) {
-      ++this.currentPage;
-    }
-  };
-  prevPageDisabled() {
-    return this.currentPage === 1 ? "disabled" : "";
-  };
-
-  nextPageDisabled() {
-    return this.currentPage === this._maxPage ? "disabled" : "";
-  };
+  
 
   onSubmit(form: any){
     console.log(form.keyword);
