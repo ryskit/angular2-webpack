@@ -16,6 +16,7 @@ export class HeroDetailComponent implements OnInit {
   error: any;
   sub: any;
   navigated = false;
+  editable: boolean = false;
 
   constructor(
     private heroService: HeroService,
@@ -36,6 +37,10 @@ export class HeroDetailComponent implements OnInit {
     });
   }
 
+  edit() {
+    this.editable = true;
+  }
+
   save() {
     this.heroService
         .save(this.hero)
@@ -47,6 +52,9 @@ export class HeroDetailComponent implements OnInit {
   }
 
   goBack(saveHero: Hero = null) {
+    if (this.editable === true) {
+      return this.editable = false;
+    }
     this.close.emit(saveHero);
     if (this.navigated) { window.history.back(); }
   }

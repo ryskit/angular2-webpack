@@ -1,10 +1,21 @@
 <div *ngIf="hero">
   <h2>{{hero.name}} details!</h2>
   <div><label>id: </label>{{hero.id}}</div>
-  <div>
+  <div *ngIf="!editable">
     <label>name: </label>
-    <input [(ngModel)]="hero.name" placeholder="name"/>
+      {{ hero.name }}
   </div>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
+  <div *ngIf="!editable">
+    <button (click)="goBack()">Back</button>
+    <button (click)="edit()">Edit</button>
+  </div>
+
+  <div *ngIf="editable">
+    <label>name: </label>
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+  </div>
+  <div *ngIf="editable">
+    <button (click)="goBack()">Cancel</button>
+    <button (click)="save()">Save</button>
+  </div>
 </div>
