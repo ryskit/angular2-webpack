@@ -34,6 +34,8 @@ export class HeroSearchService {
                 .toPromise()
                 .then(res => {
                   let data = res.json() as Hero[];
+                  if (keyword === null) { keyword = ".*"; }
+                  console.log(keyword);
                   var heroes: Array<Hero> = new Array();
                   for (let hero of data) {
                     if (hero.name.match(new RegExp(keyword))) {
