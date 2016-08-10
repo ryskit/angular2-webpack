@@ -4,6 +4,7 @@ import { NgForm }    from '@angular/common';
 
 import { Hero } from './hero';
 import { HeroService } from './services/hero.service';
+import { HeroSearchService } from './services/hero-search.service';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroSearchComponent } from './hero-search.component';
 import { PaginatePipe, PaginationControlsCmp, PaginationService } from 'ng2-pagination';
@@ -23,7 +24,8 @@ import { PaginatePipe, PaginationControlsCmp, PaginationService } from 'ng2-pagi
     PaginatePipe
   ],
   providers: [
-    PaginationService
+    PaginationService,
+    HeroSearchService
   ]
 })
 
@@ -35,10 +37,12 @@ export class HeroesComponent implements OnInit {
   itemsPerPage: number = 3;
   currentPage: number  = 1;
   private _maxPage: number;
+  keyword: string;
 
   constructor(
     private router: Router,
-    private heroService: HeroService
+    private heroService: HeroService,
+    private heroSearchService: HeroSearchService
   ) {}
 
   ngOnInit() {
@@ -75,9 +79,9 @@ export class HeroesComponent implements OnInit {
 
 
 
-  
+
 
   onSubmit(form: any){
-    console.log(form.keyword);
+    this.heroSearchService.retrieve(form.keyword).then(heroes => this.heroes = heroes);
   }
 }

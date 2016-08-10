@@ -28,4 +28,20 @@ export class HeroSearchService {
                   return heroes;
                 });
   }
+
+  retrieve(keyword: string) {
+    return this.http.get(this.heroesUrl)
+                .toPromise()
+                .then(res => {
+                  let data = res.json() as Hero[];
+                  var heroes: Array<Hero> = new Array();
+                  for (let hero of data) {
+                    if (hero.name.match(new RegExp(keyword))) {
+                      heroes.push(hero);
+                    }
+                  }
+                  return heroes;
+                });
+  }
+
 }
