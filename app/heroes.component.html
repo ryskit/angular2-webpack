@@ -1,33 +1,10 @@
+<h1>{{title}}</h1>
 <h2>My Heroes</h2>
-
-<hero-search></hero-search>
-
-<hr>
-
-<form (ngSubmit)="onSubmit(heroForm.value)" #heroForm="ngForm">
-  名前: <input type="text" ngControl="keyword"  #keyword="ngForm" >
-  <div class="text-center">
-    <button type="submit">検索</button>
-  </div>
-</form>
-
-<hr>
-
-<button (click)="gotoDetail()">Add New Hero</button>
-
-<div class="error" *ngIf="error">{{error}}</div>
-
-<div *ngIf="!heroes">
-  Heroが見つかりませんでした。
-</div>
 <ul class="heroes">
-  <li *ngFor="let hero of heroes | paginate: { itemsPerPage: 2, currentPage: p }"
-      (click)="gotoDetail(hero)" [class.selected]="hero === selectedHero">
-    <span class="hero-element">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </span>
-    <button class="delete-button" (click)="deleteHero(hero, $event)">Delete</button>
+  <li *ngFor="let hero of heroes"
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
   </li>
 </ul>
-
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<my-hero-detail [hero]="selectedHero"></my-hero-detail>

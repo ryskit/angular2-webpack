@@ -7,7 +7,7 @@
     "start": "webpack-dev-server",
     "webpack": "webpack",
     "build": "npm run tsc && npm run webpack",
-    "postinstall": "typings install"
+    "typings": "typings install"
   },
   "license": "MIT",
   "dependencies": {
@@ -32,7 +32,6 @@
     "file-loader": "^0.9.0",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.15.0",
-    "jasmine-core": "^2.4.1",
     "null-loader": "^0.1.1",
     "phantomjs-prebuilt": "^2.1.7",
     "raw-loader": "^0.5.1",
