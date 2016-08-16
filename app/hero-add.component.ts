@@ -26,7 +26,7 @@ export class HeroAddComponent implements OnInit {
     });
   }
 
-  save() {
+  onSubmit() {
     this.heroService.save(this.hero)
       .then(hero => this.hero = hero);
     this.goBack(this.hero);

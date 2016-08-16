@@ -29,7 +29,7 @@ export class HeroEditComponent implements OnInit {
     });
   }
 
-  save() {
+  onSubmit() {
     this.heroService.save(this.hero);
     this.goBack();
   }
