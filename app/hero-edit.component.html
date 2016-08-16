@@ -9,8 +9,8 @@
     </div>
   </div>
   <div class="btn">
-    <button (click)="goBack()">キャンセル</button>
-    <button (click)="delete()">削除する</button>
+    <a class="button" (click)="goBack()">キャンセル</a>
+    <a class="button" (click)="delete()">削除する</a>
     <button type="submit" [disabled]="!heroForm.form.valid">保存する</button>
   </div>
 <pre>heroForm.form.valid: {{heroForm.form.valid | json}}</pre>
