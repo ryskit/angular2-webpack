@@ -7,7 +7,7 @@ import { HeroDetailComponent } from './hero-detail.component';
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/heroes',
     pathMatch: 'full'
   },
   {
@@ -17,6 +17,10 @@ const appRoutes: Routes = [
   {
     path: 'heroes',
     component: HeroesComponent
+  },
+  {
+    path: 'detail',
+    component: HeroDetailComponent
   },
   {
     path: 'detail/:id',
