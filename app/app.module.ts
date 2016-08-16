@@ -2,6 +2,8 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 
+import { Location, LocationStrategy, HashLocationStrategy } from '@angular/common';
+
 // Imports for loading & configuring the in-memory web api
 import { HttpModule, XHRBackend } from '@angular/http';
 import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
@@ -36,7 +38,8 @@ import { HeroService }   from './hero.service';
   providers: [
     HeroService,
     { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
-    { provide: SEED_DATA,  useClass: InMemoryDataService }
+    { provide: SEED_DATA,  useClass: InMemoryDataService },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [ AppComponent ]
 })
