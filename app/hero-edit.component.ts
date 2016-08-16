@@ -34,6 +34,11 @@ export class HeroEditComponent implements OnInit {
     this.goBack();
   }
 
+  delete() {
+    this.heroService.delete(this.hero);
+    this.router.navigate(['/heroes']);
+  }
+
   goBack() {
     this.router.navigate(['/detail', this.hero.id]);
   }

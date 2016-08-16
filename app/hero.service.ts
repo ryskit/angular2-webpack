@@ -33,6 +33,16 @@ export class HeroService {
     return this.post(hero);
   }
 
+  delete(hero: Hero) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let url = `${this.heroesUrl}/${hero.id}`;
+    return this.http
+               .delete(url, {headers: headers})
+               .toPromise()
+               .catch(this.handleError);
+  }
+
   private post(hero: Hero): Promise<Hero> {
     let headers = new Headers({
       'Content-Type': 'application/json'});
