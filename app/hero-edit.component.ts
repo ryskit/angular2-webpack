@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Hero } from './hero';
@@ -6,18 +6,17 @@ import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
 @Component({
-  selector: 'my-hero-detail',
-  templateUrl: 'app/hero-detail.component.html',
-  styleUrls: ['app/hero-detail.component.css'],
+  selector: 'my-hero-edit',
+  templateUrl: 'app/hero-edit.component.html',
 })
 
-export class HeroDetailComponent implements OnInit {
-  @Input() hero: Hero;
+export class HeroEditComponent implements OnInit {
+  hero: Hero;
 
   constructor(
-    private heroService: HeroService,
+    private router: Router,
     private route: ActivatedRoute,
-    private router: Router
+    private heroService: HeroService
   ) {}
 
   ngOnInit() {
@@ -30,11 +29,12 @@ export class HeroDetailComponent implements OnInit {
     });
   }
 
-  edit() {
-    this.router.navigate(['/edit', this.hero.id]);
+  save() {
+    this.heroService.save(this.hero);
+    this.goBack();
   }
 
   goBack() {
-    this.router.navigate(['/heroes']);
+    this.router.navigate(['/detail', this.hero.id]);
   }
 }

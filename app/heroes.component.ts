@@ -38,6 +38,6 @@ export class HeroesComponent implements OnInit {
   }
 
   addHero() {
-    this.router.navigate(['/detail']);
+    this.router.navigate(['/add']);
   }
 }
