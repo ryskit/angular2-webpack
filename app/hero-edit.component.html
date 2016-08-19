@@ -1,0 +1,17 @@
+<form *ngIf="hero" #heroForm="ngForm" (ngSubmit)="onSubmit()">
+  <h2>{{hero.name}} details!</h2>
+  <div><label>id: </label>{{hero.id}}</div>
+  <div>
+    <label>name: </label>
+    <input type="text" [(ngModel)]="hero.name" name="name" #name="ngModel" required>
+    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+      Name is required
+    </div>
+  </div>
+  <div class="btn">
+    <a class="button" (click)="goBack()">キャンセル</a>
+    <a class="button" (click)="delete()">削除する</a>
+    <button type="submit" [disabled]="!heroForm.form.valid">保存する</button>
+  </div>
+<pre>heroForm.form.valid: {{heroForm.form.valid | json}}</pre>
+</form>

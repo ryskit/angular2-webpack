@@ -1,4 +1,9 @@
 .idea
 node_modules
+<<<<<<< HEAD
 npm-debug.log
 
+=======
+build
+npm-debug.log
+>>>>>>> 65c96d4
